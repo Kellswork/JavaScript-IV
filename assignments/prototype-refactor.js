@@ -104,7 +104,7 @@ const archer = new Humanoid({
 
 // console.log(mage.createdAt); // Today's date
 // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-console.log(swordsman.healthPoints); // 15
+// console.log(swordsman.healthPoints); // 15
 // console.log(mage.name); // Bruce
 // console.log(swordsman.team); // The Round Table
 // console.log(mage.weapons); // Staff of Shamalama
@@ -121,7 +121,7 @@ console.log(swordsman.healthPoints); // 15
 // function for Villian
 class Villain extends Humanoid {
   constructor(player) {
-    Super(player);
+    super(player);
   }
   life() {
     return this.healthPoints > 1
@@ -133,7 +133,7 @@ class Villain extends Humanoid {
 // function for Hero
 class Hero extends Humanoid {
     constructor(player) {
-      Super(player);
+      super(player);
     }
     life() {
       return this.healthPoints > 1
