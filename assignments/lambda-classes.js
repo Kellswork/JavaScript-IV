@@ -48,6 +48,20 @@ class Student extends Person {
   }
 }
 
+class ProjectManager extends Instructor {
+  constructor(personnel) {
+    super(personnel);
+    this.gradClassName = personnel.gradClassName;
+    this.favInstructor = personnel.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!​​​​​`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
+}
+
 const fred = new Instructor({
   name: "Fred",
   location: "Bedrock",
@@ -58,26 +72,26 @@ const fred = new Instructor({
   catchPhrase: `Don't forget the homies`
 });
 
-console.log(fred.name);
-console.log(fred.favLanguage);
-console.log(fred.demo("javascript"));
-console.log(fred.speak());
-console.log(
-  fred.grade({
-    name: "sandra",
-    subject: "JavaScript"
-  })
-);
-
 const kelechi = new Student({
   name: "kelechi",
   location: "lagos",
   age: 12,
   gender: "female",
+  favLanguage: "JavaScript",
+  specialty: "Front-end",
+  catchPhrase: `stay awesome`,
   previousBackground: "seamstress",
   classname: "javascript fundamentals",
   favSubjects: ["html", "css", "javascript"]
 });
 
-console.log(kelechi.sprintChallenge('javascript-iv'))
-kelechi.listsSubjects()
+const kevin = new ProjectManager ({
+    name: "kevin",
+    location: "london",
+    age: 29,
+    gender: "male",
+    gradClassName: 'webu2u',
+    favInstructor: 'gabriel'
+})
+
+
