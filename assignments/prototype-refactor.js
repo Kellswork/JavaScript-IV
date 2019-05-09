@@ -24,7 +24,7 @@ class GameObject {
   */
 class CharacterStats extends GameObject {
   constructor(player) {
-    Super(player);
+    super(player);
     this.healthPoints = player.healthPoints;
   }
   takeDamage() {
@@ -42,7 +42,7 @@ class CharacterStats extends GameObject {
   */
 class Humanoid extends CharacterStats {
   constructor(player) {
-    Super(player);
+    super(player);
     this.team = player.team;
     this.weapons = player.weapons;
     this.language = player.language;
@@ -119,30 +119,28 @@ console.log(swordsman.healthPoints); // 15
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
 
 // function for Villian
-function Villain(player) {
-  Humanoid.call(this, player);
+class Villain extends Humanoid {
+  constructor(player) {
+    Super(player);
+  }
+  life() {
+    return this.healthPoints > 1
+      ? (this.healthPoints = this.healthPoints - 1)
+      : this.destroy();
+  }
 }
-
-Villain.prototype.call = Object.create(Humanoid.prototype);
-
-Villain.prototype.life = function() {
-  return this.healthPoints > 1
-    ? (this.healthPoints = this.healthPoints - 1)
-    : this.destroy();
-};
 
 // function for Hero
-function Hero(player) {
-  Humanoid.call(this, player);
-}
-
-Hero.prototype = Object.create(Humanoid.prototype);
-
-Hero.prototype.life = function() {
-  return this.healthPoints > 1
-    ? (this.healthPoints = this.healthPoints - 1)
-    : this.destroy();
-};
+class Hero extends Humanoid {
+    constructor(player) {
+      Super(player);
+    }
+    life() {
+      return this.healthPoints > 1
+        ? (this.healthPoints = this.healthPoints - 1)
+        : this.destroy();
+    }
+  }
 
 const hero = new Hero({
   createdAt: new Date(),
